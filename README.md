@@ -18,6 +18,23 @@ Ansible es una herramienta de automatización de TI de código abierto que permi
 
 ## Ejemplo Básico en Markdown
 
+Diagrama de Secuencia:
+
+```mermaid
+sequenceDiagram
+    actor Usuario
+    participant Ansible
+    participant Nodo
+
+    Usuario->>+Ansible: Inicia playbook
+    Ansible->>+Nodo: Conecta vía SSH
+    loop Tareas del playbook
+        Ansible->>Nodo: Ejecuta tarea
+        Nodo->>Ansible: Reporta resultado
+    end
+    Ansible->>-Usuario: Finaliza ejecución y reporta
+```
+
 Aquí se muestra un ejemplo básico de cómo definir una tarea en Ansible para actualizar todos los paquetes en un servidor Ubuntu:
 
 ```yaml
