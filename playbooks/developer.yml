@@ -1,4 +1,11 @@
 ---
-- import_playbook: server.yml
-- import_playbook: neovim_setup.yml
-- import_playbook: postgres.yml
+# Importa otros playbooks para ejecutar una serie de configuraciones predefinidas.
+
+# Importa el playbook 'server.yml'
+- import_playbook: server.yml  # Este playbook podría contener configuraciones generales del servidor.
+
+# Importa el playbook 'neovim_setup.yml'
+- import_playbook: neovim_setup.yml  # Este playbook se encarga de la instalación y configuración de Neovim.
+
+# Importa el playbook 'postgres.yml'
+- import_playbook: postgres.yml  # Este playbook podría configurar PostgreSQL en el servidor.
