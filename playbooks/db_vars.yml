@@ -1,10 +1,12 @@
-# App Name
-app_name: django_bootstrap
-# Deployer User and Groups
-deployer_user: ubuntu
-deployer_group: ubuntu
-db_url: postgresql://{{deployer_user}}:{{db_password}}@localhost/{{app_name}}
-db_password: thisissomeseucrepassword
-db_name: "{{ app_name }}"
-db_user: "{{ deployer_user }}"
+# Nombre de la Aplicación
+app_name: django_bootstrap  # Define el nombre de la aplicación, utilizado en varias configuraciones.
 
+# Usuario y Grupo del Desplegador
+deployer_user: ubuntu  # Define el usuario bajo el cual se ejecutarán las operaciones de despliegue.
+deployer_group: ubuntu  # Define el grupo del usuario de despliegue.
+
+# Configuración de la Base de Datos
+db_url: postgresql://{{deployer_user}}:{{db_password}}@localhost/{{app_name}}  # URL de conexión a la base de datos.
+db_password: thisissomeseucrepassword  # Contraseña para el usuario de la base de datos, debe ser segura y única.
+db_name: "{{ app_name }}"  # Nombre de la base de datos, aquí se utiliza el nombre de la aplicación.
+db_user: "{{ deployer_user }}"  # Usuario de la base de datos, se utiliza el mismo usuario del despliegue.
