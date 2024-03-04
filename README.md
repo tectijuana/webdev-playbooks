@@ -9,7 +9,7 @@ Ansible es una herramienta de automatización de TI de código abierto que permi
 - **Orquestación de Tareas**: Ansible puede coordinar acciones complejas entre diferentes sistemas, servicios y herramientas, permitiendo una gestión eficiente de las dependencias y el flujo de trabajo.
 - **Automatización sin Agentes**: No requiere la instalación de software adicional ("agentes") en los nodos gestionados. Se conecta y ejecuta tareas utilizando SSH (Secure Shell) o WinRM (Windows Remote Management) para sistemas Windows.
 
-## Ventajas de Ansible para Ingenieros en Sistemas Computacionales
+## Ventajas de Ansible 
 
 - **Simplicidad y Facilidad de Uso**: La sintaxis de Ansible es clara y fácil de aprender, lo que permite a los ingenieros automatizar tareas complejas con poco esfuerzo.
 - **Escalabilidad**: Ansible puede gestionar desde un pequeño número de nodos hasta miles de ellos, lo que lo hace adecuado para entornos de cualquier tamaño.
