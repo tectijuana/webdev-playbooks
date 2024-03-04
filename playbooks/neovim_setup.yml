@@ -1,27 +1,38 @@
 ---
-- name: Neovim Setup 
-  hosts: all
-  tasks:
+# Configuración de Neovim
+- name: Neovim Setup  # Nombre del playbook
+  hosts: all  # Especifica que el playbook se ejecutará en todos los hosts
+  tasks:  # Inicio de la lista de tareas a ejecutar
+
+  # Tarea para instalar dependencias necesarias
   - name: Install dependencies
-    become: yes
-    ansible.builtin.apt:
-      pkg:
-      - gcc
+    become: yes  # Ejecutar como superusuario
+    ansible.builtin.apt:  # Utiliza el módulo apt de Ansible
+      pkg:  # Lista de paquetes a instalar
+      - gcc  # Compilador de C necesario para algunas dependencias de nvim
+
+  # Tarea para instalar Neovim a través de snap
   - name: Install Nvim
-    become: yes
-    community.general.snap:
-       name: "nvim"
-       classic: yes
+    become: yes  # Ejecutar como superusuario
+    community.general.snap:  # Utiliza el módulo snap de la comunidad
+      name: "nvim"  # Nombre del paquete snap a instalar
+      classic: yes  # Permite la instalación de snaps clásicos
+
+  # Tarea para instalar Packer, un gestor de paquetes para Neovim
   - name: Install Packer
-    ansible.builtin.git:
-      repo: 'https://github.com/wbthomason/packer.nvim'
-      dest: ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-      depth: 1
+    ansible.builtin.git:  # Utiliza el módulo git de Ansible
+      repo: 'https://github.com/wbthomason/packer.nvim'  # URL del repositorio de Packer
+      dest: ~/.local/share/nvim/site/pack/packer/start/packer.nvim  # Destino donde clonar el repositorio
+      depth: 1  # Clona solo el último commit para ahorrar tiempo y espacio
+
+  # Tarea para clonar una configuración personalizada de Neovim
   - name: Clone Config
-    ansible.builtin.git:
-      repo: 'https://github.com/mariosky/nvim.git'
-      dest: ~/.config/nvim
-      depth: 1
+    ansible.builtin.git:  # Utiliza el módulo git de Ansible
+      repo: 'https://github.com/mariosky/nvim.git'  # URL del repositorio de configuración
+      dest: ~/.config/nvim  # Destino donde clonar la configuración de Neovim
+      depth: 1  # Clona solo el último commit
+
+  # Tarea para ejecutar Packer y sincronizar los plugins
   - name: Run Packer 
     ansible.builtin.command: nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-
+    # Ejecuta Neovim en modo sin cabeza para sincronizar los plugins automáticamente con Packer
